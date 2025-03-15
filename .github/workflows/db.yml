@@ -1,0 +1,28 @@
+name: Import Database
+on:
+  workflow_dispatch: # Déclenchement manuel
+jobs:
+  import-db:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Login to Azure
+        run: |
+          az login --service-principal \
+            -u ${{ secrets.AZURE_CLIENT_ID }} \
+            -p ${{ secrets.AZURE_CLIENT_SECRET }} \
+            --tenant ${{ secrets.AZURE_TENANT_ID }}
+
+      - name: Import BACPAC file to Azure SQL Database
+        run: |
+          az sql db import \
+            --resource-group ${{ secrets.RESOURCE_GROUP }} \
+            --server sqlsrv-calicot-dev-${{ secrets.CODE_IDENTIFICATION }} \
+            --name sqldb-calicot-dev-${{ secrets.CODE_IDENTIFICATION }} \
+            --storage-key-type SharedAccessKey \
+            --storage-uri "https://stcalicotprod000.blob.core.windows.net/db/Auctions_Data.bacpac" \
+            --storage-key ${{ secrets.STORAGE_ACCOUNT_KEY }} \
+            --admin-user sqladmin \
+            --admin-password ${{ secrets.SQL_ADMIN_PASSWORD }}
