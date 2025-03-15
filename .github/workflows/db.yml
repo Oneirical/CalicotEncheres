@@ -22,7 +22,7 @@ jobs:
             --server sqlsrv-calicot-dev-${{ secrets.CODE_IDENTIFICATION }} \
             --name sqldb-calicot-dev-${{ secrets.CODE_IDENTIFICATION }} \
             --storage-key-type SharedAccessKey \
-            --storage-uri "https://stcalicotprod000.blob.core.windows.net/db/Auctions_Data.bacpac" \
+            --storage-uri "https://stcalicotprod000.blob.core.windows.net/images/Auctions_Data.bacpac" \
             --storage-key ${{ secrets.STORAGE_ACCOUNT_KEY }} \
             --admin-user sqladmin \
             --admin-password ${{ secrets.SQL_ADMIN_PASSWORD }}
