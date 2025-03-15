@@ -1,4 +1,4 @@
-# Défi Interuniversitaire en **Infrastructure as Code (IaC)** - Microsoft Azure
+# ÉQUIPE 9 - UNIVERSITÉ CONCORDIA - ROUGE
 
 **Durée** : 3 heures  
 **Équipes** : 2 personnes  
